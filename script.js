@@ -84,7 +84,7 @@ form.addEventListener("submit", e => {
       return li;
   }
 
-  const urlWeatherApi = `http://api.weatherapi.com/v1/current.json?key=${apiKeyWeatherApi}&q=${inputVal}&aqi=no`;  
+  const urlWeatherApi = `https://api.weatherapi.com/v1/current.json?key=${apiKeyWeatherApi}&q=${inputVal}&aqi=no`;  
   //Weather API запрос
   (async function weatherAPICall() {
     fetch(urlWeatherApi)
@@ -114,7 +114,7 @@ form.addEventListener("submit", e => {
       });
   })();
 
-    const urlWeatherStack = `http://api.weatherstack.com/current?access_key=${apiKeyWeatherStack}&query=${inputVal}`;
+    const urlWeatherStack = `https://api.weatherstack.com/current?access_key=${apiKeyWeatherStack}&query=${inputVal}`;
 
     (async function weatherStackAPICall() {
       //Weather Stack API запрос
