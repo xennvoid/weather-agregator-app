@@ -1,0 +1,4 @@
+https://www.weatherapi.com/
+https://openweathermap.org/
+https://www.weatherbit.io/
+https://weatherstack.com/

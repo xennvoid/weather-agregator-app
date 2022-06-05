@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+      <section class="top-banner">
+        <div class="container">
+          <h1 class="heading">Текущая погода в вашем городе</h1>
+          <form>
+            <input type="text" placeholder="Введите название города" autofocus>
+            <button type="submit">Поиск</button>
+            <span class="msg"></span>
+          </form>
+        </div>
+      </section>
+      <section class="fetch-section">
+        <div class="container">
+          <ul class="cities"></ul>
+        </div>
+      </section>
+      <footer class="page-footer">
+        <div class="container"></div>
+      </footer>
+
+      <script src="./script.js"></script>
+</body>
+</html>
