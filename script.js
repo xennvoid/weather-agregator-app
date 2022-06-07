@@ -22,7 +22,7 @@ form.addEventListener("submit", e => {
   let inputVal = input.value;
   list.innerHTML = "";
 
-  const urlOpenWeather = `http://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKeyOpenWeather}&units=metric`;
+  const urlOpenWeather = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${apiKeyOpenWeather}&units=metric`;
   //Open weather запрос
   (async function openWeatherAPICall(){
       fetch(urlOpenWeather)
@@ -30,13 +30,13 @@ form.addEventListener("submit", e => {
       .then(data => {
         const { main, name, sys, weather, wind } = data;
 
-        const icon = `http://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${
+        const icon = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${
           weather[0]["icon"]
         }.svg`;
 
         const li = createWeatherCard({
           source_name: "Open Weather API",
-          href: "http://openweathermap.org/",
+          href: "https://openweathermap.org/",
           city_name: name,
           country: sys.country,
           icon: icon,
@@ -84,7 +84,7 @@ form.addEventListener("submit", e => {
       return li;
   }
 
-  const urlWeatherApi = `http://api.weatherapi.com/v1/current.json?key=${apiKeyWeatherApi}&q=${inputVal}&aqi=no`;  
+  const urlWeatherApi = `https://api.weatherapi.com/v1/current.json?key=${apiKeyWeatherApi}&q=${inputVal}&aqi=no`;  
   //Weather API запрос
   (async function weatherAPICall() {
     fetch(urlWeatherApi)
@@ -95,7 +95,7 @@ form.addEventListener("submit", e => {
 
         const li = createWeatherCard({
           source_name: "Weather API",
-          href: "http://www.weatherapi.com/",
+          href: "https://www.weatherapi.com/",
           city_name: location.name,
           country: location.country,
           icon: icon,
@@ -147,18 +147,18 @@ form.addEventListener("submit", e => {
   })();
 
   //WeatherBit запрос
-  const urlWeatherBit = `http://api.weatherbit.io/v2.0/current?key=${apiKeyWeatherBit}&city=${inputVal}`;
+  const urlWeatherBit = `https://api.weatherbit.io/v2.0/current?key=${apiKeyWeatherBit}&city=${inputVal}`;
 
   (async function weatherBitAPICall() {
     fetch(urlWeatherBit)
     .then(response => response.json())
     .then(data => {
         const info = data.data[0];
-        const icon = `http://www.weatherbit.io/static/img/icons/${info.weather.icon}.png`;
+        const icon = `https://www.weatherbit.io/static/img/icons/${info.weather.icon}.png`;
 
         const li = createWeatherCard({
           source_name: "WeatherBit API",
-          href: "http://www.weatherbit.io/",
+          href: "https://www.weatherbit.io/",
           city_name: info.city_name,
           country: info.country_code,
           icon: icon,
