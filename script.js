@@ -134,7 +134,7 @@ form.addEventListener("submit", e => {
           country: resolvedAddress.split(',')[1],
           icon: `./img/visualCrossingIcons/${currentConditions.icon}.svg`,
           description: currentConditions.conditions,
-          temperature: currentConditions.feelslike,
+          temperature: currentConditions.temp,
           humidity: currentConditions.humidity,
           pressure: currentConditions.pressure,
           wind: currentConditions.windspeed,
