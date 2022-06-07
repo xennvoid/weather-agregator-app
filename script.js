@@ -116,8 +116,8 @@ form.addEventListener("submit", e => {
 
     const urlVisualCrossing = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${inputVal}/today?unitGroup=metric&include=current&key=${apiKeyVisualCrossing}&contentType=json`;
 
-    (async function weatherStackAPICall() {
-      //Weather Stack API запрос
+    (async function weatherVisualCrossingAPICall() {
+      //Visual Crossing API запрос
       fetch(urlVisualCrossing)
       .then(response => response.json())
       .then(data => {
@@ -125,7 +125,6 @@ form.addEventListener("submit", e => {
         console.log(data)
 
         const { currentConditions, resolvedAddress, address } = data;
-        //const icon = `${current.weather_icons[0]}`;
 
         const li = createWeatherCard({
           source_name: "Visual Crossing API",
