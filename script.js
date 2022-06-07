@@ -6,8 +6,8 @@ const list = document.querySelector(".fetch-section .cities");
 
 const apiKeyOpenWeather = '4d8fb5b93d4af21d66a2948710284366';
 const apiKeyWeatherApi = '0d7fd0a1287642beaf493432220205';
-const apiKeyWeatherStack = '75adccd692aa942ed88d0d8d88cac588';
 const apiKeyWeatherBit = '63e0fbad419a4763a260f073a7bfbd69';
+const apiKeyVisualCrossing = 'GLB2BQLV3QCSYVHMFBZT54CAC';
 
 input.addEventListener('keydown', function(e){
   if( e.key.match(/[0-9]/) ) return this.preventDefault();
@@ -114,28 +114,30 @@ form.addEventListener("submit", e => {
       });
   })();
 
-    const urlWeatherStack = `http://api.weatherstack.com/current?access_key=${apiKeyWeatherStack}&query=${inputVal}`;
+    const urlVisualCrossing = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${inputVal}/today?unitGroup=metric&include=current&key=${apiKeyVisualCrossing}&contentType=json`;
 
     (async function weatherStackAPICall() {
       //Weather Stack API запрос
-      fetch(urlWeatherStack)
+      fetch(urlVisualCrossing)
       .then(response => response.json())
       .then(data => {
 
-        const { request, location, current } = data;
-        const icon = `${current.weather_icons[0]}`;
+        console.log(data)
+
+        const { currentConditions, resolvedAddress, address } = data;
+        //const icon = `${current.weather_icons[0]}`;
 
         const li = createWeatherCard({
-          source_name: "Weather Stack API",
-          href: "http://weatherstack.com/",
-          city_name: location.name,
-          country: location.country,
-          icon: icon,
-          description: current.weather_descriptions[0],
-          temperature: current.temperature,
-          humidity: current.humidity,
-          pressure: current.pressure,
-          wind: current.wind_speed,
+          source_name: "Visual Crossing API",
+          href: "https://www.visualcrossing.com/",
+          city_name: address.split(',')[0],
+          country: resolvedAddress.split(',')[1],
+          icon: `./img/visualCrossingIcons/${currentConditions.icon}.svg`,
+          description: currentConditions.conditions,
+          temperature: currentConditions.feelslike,
+          humidity: currentConditions.humidity,
+          pressure: currentConditions.pressure,
+          wind: currentConditions.windspeed,
           wind_units: "k/h"
         });
 
